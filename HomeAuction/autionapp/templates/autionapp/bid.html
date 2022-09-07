@@ -1,0 +1,30 @@
+{% extends "autionapp/base.html" %}
+{% block body_block %}
+{% load humanize %}
+
+<div class="jumbotron">
+
+
+  <h2> You need to be login to Bid</h2>
+  <form method="post">
+    {% csrf_token %}
+
+
+    {{ bid_form.as_p }}
+
+    <input type="submit" name="" value="bid">
+
+
+  </form>
+  {% if messages %}
+  <ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+
+</div>
+
+{% endblock %}

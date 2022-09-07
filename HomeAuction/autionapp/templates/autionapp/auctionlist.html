@@ -1,0 +1,48 @@
+{% extends "autionapp/base.html" %}
+{% block body_block %}
+{% load humanize %}
+
+        <h1>Welcome to our Auction Site</h1>
+        <h3> The following are the current homes available for Auction</h3>
+        <div class="auctiontabel">
+          {% if home_records %}
+          <table>
+            <<thead>
+              <th>House_id</th>
+              <th>House Name</th>
+              <th>House Area</th>
+              <th>House Size</th >
+              <th>Starting Price</th>
+              <th>Auction End Date</th>
+              <th>Current Max Bid</th>
+              <th>Current Max Bidder</th>
+              <th>Details URL</th>
+            </thead>
+
+            {% for homes in home_records %}
+            <tr>
+              <td>{{ homes.house_id}}</td>
+              <td>{{ homes.house_name}}</td>
+              <td>{{ homes.house_area }}</td>
+              <td>{{ homes.total_area}}</td>
+              <td>{{ homes.starting_price|floatformat:2|intcomma }}</td>
+              <td>{{ homes.auction_end_date|date:'Y-m-d'}}</td>
+              <td>{{ homes.max_bid_price|floatformat:2|intcomma }}</td>
+              <td>{{ homes.max_bidder}}</td>
+              <td><a href="{{homes.house_detail_url}}">DetailLink</a></td>
+
+            </tr>
+            {% endfor %}
+          </table>
+
+          {% else %}
+          <p> No acces records</p>
+          {% endif %}
+
+
+        </div>
+      </div>
+
+    </div>
+
+{% endblock %}

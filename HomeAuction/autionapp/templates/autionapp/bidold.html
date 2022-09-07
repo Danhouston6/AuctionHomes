@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{% extends "autionapp/base.html" %}
+
+
+{% block body_block %}
+<div class="jumbotron">
+  <!-- {% if registered %} -->
+    <h1> Thank you coming to bid </h1>
+    <h1> You bid amount need to be more than the already registerd Bid</h1>
+
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ bid_form.as_p }}
+    <h1>hi</h1>
+    <input type="submit" name="" value="Bid">
+
+  </form>
+
+  <!-- {% else %} -->
+  <h1> Register Here! Bid HTML</h1>
+  <h3> Fill out the form</h3>
+
+
+  <!-- {% endif %} -->
+
+</div>
+
+
+{% endblock %}
